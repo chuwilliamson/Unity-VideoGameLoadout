@@ -1,10 +1,13 @@
-﻿
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
+
 public class PlayerBehaviour : MonoBehaviour
 {
-    EventPlayer PlayerMovementEvent;
-    public int Level;
+    static public EventPlayer PlayerMovementEvent;
+    public int Level
+    {
+        get { return _level; }
+    }
+    private int _level = 0;
     public Vector2 Position;
     void Awake()
     {
@@ -12,11 +15,13 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void Start()
     {
+        PlayerMovementEvent.AddListener(DoMovement);
         Position = new Vector2(0, 0);
     }
     // Update is called once per frame
     void Update()
     {
+        var oldpos = Position;
         ///lvl 1
         if(Level == 0)
         {
@@ -32,7 +37,16 @@ public class PlayerBehaviour : MonoBehaviour
                 y -= 1;
             
             Position = new Vector2(x, y);
+            
         }
-        
+
+        if(PlayerMovementEvent != null && oldpos != Position)
+            PlayerMovementEvent.Invoke();
     }
+
+    void DoMovement()
+    {
+        Debug.Log("moved");
+    }
+    
 }
