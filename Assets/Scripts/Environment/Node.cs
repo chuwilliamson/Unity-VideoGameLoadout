@@ -1,6 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// How to use
+/// =============
+/// To get information about the node from outside the class
+/// invoke the NodeInformation function with a instance of the class.
+/// The function returns a string with the position value of the node and 
+/// the dialogue associated with the node. The Dialogue of a node should be 
+/// Breezy, Shiny, Smelly, or nothing.
+/// return value will look somehthing like this
+///     Position: <0,0> Dialogue: Breezy
+/// </summary>
 
 [ExecuteInEditMode]
 public class Node : MonoBehaviour

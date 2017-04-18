@@ -2,6 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// How to use
+/// ===============
+/// To get a specific node in the grid you will need to use
+/// the GetNode funciton and give it a Vector 2 if a node is found 
+/// in the grid with the same position value as the vector passed
+/// in it will return that node. Otherwise it will return null
+/// To set up a new static grid you can invoke the SerGridValues fucntion
+/// and pass in a dictionary where the key is a vecotr representing a nodes
+/// position and the value is a string specifying what you are trying to said 
+/// the node as.
+/// ex. 
+///          Dictionary<Vector2, string> Test = new Dictionary<Vector2, string>();
+///          Test.Add(new Vector2(0, 0), "start"); Looks for a node at <0,0> and wants to make it the start node
+///          Test.Add(new Vector2(2, 0), "pit"); Looks for a node at <2,0> and wants to make it a pit
+///          Test.Add(new Vector2(2, 2), "pit");
+///          Test.Add(new Vector2(3, 3), "pit");
+///          Test.Add(new Vector2(0, 2), "wumpus"); Looks for a node at <0,2> and wants to make it a wumpus
+///          Test.Add(new Vector2(1, 2), "gold"); Looks for a node at <1,2> and wants to make it a gold
+///          Test.Add(new Vector2(3, 2), "goal"); Looks for a node at <3,2> and wants to make it the goal node
+///          SetGridValues(Test);
+/// If you do not want to set up a static grid you can set the value of isRandom to true in the inspector and the 
+/// grid will have randomly set pits, wumpus, gold, and goal positions. 
+/// </summary>
+
 public class Grid : MonoBehaviour
 {
     public List<Node> Nodes;
@@ -34,8 +59,6 @@ public class Grid : MonoBehaviour
             Test.Add(new Vector2(1, 2), "gold");
             SetGridValues(Test);
         }
-        foreach (var node in this.Nodes)
-            node.GetNeighbors(this); 
     }
 
     public void SetGridValues(Dictionary<Vector2, string> NodeSet)
@@ -72,6 +95,9 @@ public class Grid : MonoBehaviour
                     Exit = node;
             }
         }
+
+        foreach (var node in this.Nodes)
+            node.GetNeighbors(this);
     }
 
     Node GetNode(Vector2 position)
