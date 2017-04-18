@@ -14,7 +14,8 @@ public class Node : MonoBehaviour
     }
     public Habitants Habitant; //What is in the node
     public Vector2 Position; //Location of the node
-    public List<Node> Neighbors; //List of neighboring nodes    
+    public List<Node> Neighbors; //List of neighboring nodes   
+    public string Dialogue; 
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class Node : MonoBehaviour
                 }
             }
         }
+        GenerateInformation();
     }
 
     void Update()
@@ -64,24 +66,28 @@ public class Node : MonoBehaviour
         }
     }
 
-    public List<string> GetInformation()
+    public void GenerateInformation()
     {
-        List<string> Context = new List<string>();
+        Dialogue = "";
         foreach(var neighbor in this.Neighbors)
         {
             if (neighbor.Habitant == Habitants.WUMPUS)
-                Context.Add("Smells");
+                Dialogue += "Smells";
             if (neighbor.Habitant == Habitants.GOLD)
-                Context.Add("Bright");
+                Dialogue += "Bright";
             if (neighbor.Habitant == Habitants.PIT)
-                Context.Add("Breezy");            
-        }
-        return Context;
+                Dialogue += "Breezy";
+        }        
     }
 
     public void changeColor(Color col)
     {
         GetComponent<Renderer>().material.color = col;
+    }
+
+    string NodeInformation()
+    {
+        return this.Position.ToString() + " " + Dialogue;
     }
 }
 

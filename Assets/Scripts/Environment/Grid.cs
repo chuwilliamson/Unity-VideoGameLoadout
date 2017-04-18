@@ -11,10 +11,77 @@ public class Grid : MonoBehaviour
     public int NumGold;
     public Node Entrance;
     public Node Exit;
+    public bool isRandom;
 
     private void Awake()
     {
-        
+        DeleteGrid();
+        GenerateNodes();
+        if (isRandom)
+        {
+            ResetGrid();
+            RandomizeNodes();
+            TestGrid();
+        }
+        else
+        {
+            Dictionary<Vector2, string> Test = new Dictionary<Vector2, string>();
+            Test.Add(new Vector2(0, 0), "start");
+            Test.Add(new Vector2(2, 0), "pit");
+            Test.Add(new Vector2(2, 2), "pit");
+            Test.Add(new Vector2(3, 3), "pit");
+            Test.Add(new Vector2(0, 2), "wumpus");
+            Test.Add(new Vector2(1, 2), "gold");
+            SetGridValues(Test);
+        }
+        foreach (var node in this.Nodes)
+            node.GetNeighbors(this);      
+    }
+
+    public void SetGridValues(Dictionary<Vector2, string> NodeSet)
+    {
+        foreach(var index in NodeSet)
+        {
+            if(GetNode(index.Key) != null)
+            {
+                switch(index.Value)
+                {
+                    case "start":
+                        this.Entrance = GetNode(index.Key);
+                        break;
+                    case "gold":
+                        GetNode(index.Key).Habitant = Node.Habitants.GOLD;
+                        break;
+                    case "pit":
+                        GetNode(index.Key).Habitant = Node.Habitants.PIT;
+                        break;
+                    case "wumpus":
+                        GetNode(index.Key).Habitant = Node.Habitants.WUMPUS;
+                        break;
+                    case "goal":
+                        this.Exit = GetNode(index.Key);
+                        break;
+                }
+            }
+        }
+        if(Exit == null)
+        {
+            foreach(var node in Nodes)
+            {
+                if (node.Habitant == Node.Habitants.GOLD)
+                    Exit = node;
+            }
+        }
+    }
+
+    Node GetNode(Vector2 position)
+    {
+        foreach(var node in this.Nodes)
+        {
+            if (node.Position == position)
+                return node;
+        }
+        return null;
     }
 
     [ContextMenu("Test")]
@@ -22,11 +89,11 @@ public class Grid : MonoBehaviour
     {
         var test = new GridTest(Nodes,Entrance,Exit);
         var isPath = test.AStar();
-        //if (!isPath)
-        //{
-        //    Debug.Log("NoPath");
-        //    RandomizeNodes();
-        //}
+        if (isPath == false)
+        {
+            Debug.Log("NoPath");
+            RandomizeNodes();
+        }
     }
 
     [ContextMenu("Reset")]
@@ -42,11 +109,11 @@ public class Grid : MonoBehaviour
     [ContextMenu("Randomize")]
     void RandomizeNodes()
     {
+        PlaceStart();
         ResetGrid();
         PlacePits();
         PlaceWumpus();
-        PlaceGold();
-        PlaceStart();        
+        PlaceGold();       
     }
 
     void PlaceStart()
@@ -65,6 +132,8 @@ public class Grid : MonoBehaviour
         var currentPitCount = 0;
         foreach(var node in this.Nodes)
         {
+            if (node == this.Entrance)
+                continue;
             if (node.Habitant != Node.Habitants.NONE)
                 continue;
             var index = Random.Range(0, 100);
@@ -82,6 +151,8 @@ public class Grid : MonoBehaviour
         var currentWumpusCount = 0;
         foreach (var node in this.Nodes)
         {
+            if (node == this.Entrance)
+                continue;
             if (node.Habitant != Node.Habitants.NONE)
                 continue;
             var index = Random.Range(0, 100);
@@ -99,6 +170,8 @@ public class Grid : MonoBehaviour
         var currentGoldCount = 0;
         foreach (var node in this.Nodes)
         {
+            if (node == this.Entrance)
+                continue;
             if (node.Habitant != Node.Habitants.NONE)
                 continue;
             var index = Random.Range(0, 100);
@@ -268,8 +341,10 @@ class GridTest
             sortOpen(open);
             if (open.Count == 0)
             {
-                break;
+                return false;
             }
+            if (current == this.Goal)
+                break;
             current = open[0];
         }                
 
@@ -284,9 +359,6 @@ class GridTest
         {
             Debug.Log(node.Position);
         }
-
-        if(open.Count == 0)
-            return false;
         return true;
     }
 
