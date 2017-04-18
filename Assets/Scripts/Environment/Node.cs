@@ -87,7 +87,7 @@ public class Node : MonoBehaviour
 
     public string NodeInformation()
     {
-        return this.Position.ToString() + " " + Dialogue;
+        return "Position: " + this.Position.ToString() + " Dialogue:" + Dialogue;
     }
 }
 
