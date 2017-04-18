@@ -85,7 +85,7 @@ public class Node : MonoBehaviour
         GetComponent<Renderer>().material.color = col;
     }
 
-    string NodeInformation()
+    public string NodeInformation()
     {
         return this.Position.ToString() + " " + Dialogue;
     }

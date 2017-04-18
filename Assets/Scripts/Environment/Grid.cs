@@ -35,7 +35,7 @@ public class Grid : MonoBehaviour
             SetGridValues(Test);
         }
         foreach (var node in this.Nodes)
-            node.GetNeighbors(this);      
+            node.GetNeighbors(this);    
     }
 
     public void SetGridValues(Dictionary<Vector2, string> NodeSet)
