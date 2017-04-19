@@ -83,11 +83,11 @@ public class Node : MonoBehaviour
         foreach(var neighbor in this.Neighbors)
         {
             if (neighbor.Habitant == Habitants.WUMPUS)
-                Dialogue += "Smells";
+                Dialogue += "You smell a stench\n";
             if (neighbor.Habitant == Habitants.GOLD)
-                Dialogue += "Bright";
+                Dialogue += "You see a bright light\n";
             if (neighbor.Habitant == Habitants.PIT)
-                Dialogue += "Breezy";
+                Dialogue += "You fell a breeze\n";
         }        
     }
 
