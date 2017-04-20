@@ -7,31 +7,39 @@ public class EnvironmentBehaviour : MonoBehaviour
 {
     public string label01;
     public TMP_Text m_textMeshPro;
-     
+    int counter;
+    int visibleCount;
+
     void Awake()
     {
+        print("awake on EnvironmentBehaviour");
         m_textMeshPro.text = label01;
         m_textMeshPro.enableWordWrapping = true;
         m_textMeshPro.alignment = TextAlignmentOptions.Bottom;
     }
     
+    void OnEnable()
+    {
+        counter = 0;
+        visibleCount = 0;
+        label01 = "";
+        m_textMeshPro.text = label01;
+    }
+
     public void DoText()
     {
+        print("do text");
         StopCoroutine("StartUp");        
         label01 += GameStateBehaviour.Instance.playerBehaviour.GetComponent<PlayerBehaviour>().Position.ToString() + "\n";
         m_textMeshPro.text = label01;
         StartCoroutine("StartUp");
     }
-    int counter = 0;
-    int visibleCount = 0;
+    
     IEnumerator StartUp()
     {
         // Force and update of the mesh to get valid information.
         m_textMeshPro.ForceMeshUpdate();
         int totalVisibleCharacters = m_textMeshPro.textInfo.characterCount; // Get # of Visible Character in text object
-        
-        
-
         while(visibleCount < m_textMeshPro.textInfo.characterCount)
         {
             visibleCount = counter % (totalVisibleCharacters + 1);
@@ -43,8 +51,6 @@ public class EnvironmentBehaviour : MonoBehaviour
 
             yield return new WaitForSeconds(0.05f);
         }
-        
     }
-
 }
 

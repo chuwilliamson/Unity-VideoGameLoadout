@@ -23,6 +23,10 @@ public class PlayerBehaviour : MonoBehaviour
         Debug.Log("moved");
     }
 
+    private void OnEnable()
+    {
+        Position = new Vector2(0, 0);
+    }
     private void Start()
     {
         PlayerMovementEvent.AddListener(DoMovement);
