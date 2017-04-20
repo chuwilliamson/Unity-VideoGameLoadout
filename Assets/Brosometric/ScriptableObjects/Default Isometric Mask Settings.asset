@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e949c337837a647469d10983abfcfa99, type: 3}
+  m_Name: Default Isometric Mask Settings
+  m_EditorClassIdentifier: 
+  isometricMaskMaterials:
+  - name: Standard
+    type: 0
+    material: {fileID: 2100000, guid: 6335cf7b6c92acf4a9afd2c8c61f9753, type: 2}
+  - name: Impassable
+    type: 1
+    material: {fileID: 2100000, guid: 22050f55dc424e940a135d7ead044903, type: 2}
+  - name: Liquid
+    type: 2
+    material: {fileID: 0}
+  - name: Hazard
+    type: 3
+    material: {fileID: 0}

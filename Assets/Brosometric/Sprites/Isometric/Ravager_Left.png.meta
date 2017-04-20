@@ -1,0 +1,587 @@
+fileFormatVersion: 2
+guid: 561ec9487633b384f86cae7404f88b2c
+timeCreated: 1491784156
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_0
+    21300002: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_1
+    21300004: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_2
+    21300006: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_3
+    21300008: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_4
+    21300010: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_5
+    21300012: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_6
+    21300014: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_7
+    21300016: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_8
+    21300018: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_9
+    21300020: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_10
+    21300022: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_11
+    21300024: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_12
+    21300026: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_13
+    21300028: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_14
+    21300030: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_15
+    21300032: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_16
+    21300034: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_17
+    21300036: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_18
+    21300038: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_19
+    21300040: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_20
+    21300042: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_21
+    21300044: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_22
+    21300046: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_23
+    21300048: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_24
+    21300050: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_25
+    21300052: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_26
+    21300054: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_27
+    21300056: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_28
+    21300058: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_29
+    21300060: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_30
+    21300062: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_42
+    21300064: DS DSi - Final Fantasy Tactics A2 Grimoire of the Rift - Ravager_43
+    21300066: Ravager_Left_0
+    21300068: Ravager_Left_1
+    21300070: Ravager_Left_2
+    21300072: Ravager_Left_3
+    21300074: Ravager_Left_4
+    21300076: Ravager_Left_5
+    21300078: Ravager_Left_6
+    21300080: Ravager_Left_7
+    21300082: Ravager_Left_8
+    21300084: Ravager_Left_9
+    21300086: Ravager_Left_10
+    21300088: Ravager_Left_11
+    21300090: Ravager_Left_12
+    21300092: Ravager_Left_13
+    21300094: Ravager_Left_14
+    21300096: Ravager_Left_15
+    21300098: Ravager_Left_16
+    21300100: Ravager_Left_17
+    21300102: Ravager_Left_18
+    21300104: Ravager_Left_19
+    21300106: Ravager_Left_20
+    21300108: Ravager_Left_21
+    21300110: Ravager_Left_22
+    21300112: Ravager_Left_23
+    21300114: Ravager_Left_24
+    21300116: Ravager_Left_25
+    21300118: Ravager_Left_26
+    21300120: Ravager_Left_27
+    21300122: Ravager_Left_28
+    21300124: Ravager_Left_29
+    21300126: Ravager_Left_30
+    21300128: Ravager_Left_31
+    21300130: Ravager_Left_32
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ravager_Left_0
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 306
+        width: 20
+        height: 27
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_1
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 304
+        width: 21
+        height: 30
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_2
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 306
+        width: 24
+        height: 27
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_3
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 273
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_4
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 271
+        width: 23
+        height: 29
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_5
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 274
+        width: 23
+        height: 26
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_6
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 235
+        width: 31
+        height: 36
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_7
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 235
+        width: 32
+        height: 25
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 228
+        width: 30
+        height: 31
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_9
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 199
+        width: 28
+        height: 34
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 200
+        width: 29
+        height: 25
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_11
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 200
+        width: 29
+        height: 24
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 64
+        height: 94
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_13
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 165
+        width: 22
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_14
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 164
+        width: 21
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_15
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 165
+        width: 20
+        height: 25
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 164
+        width: 22
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_17
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 132
+        width: 24
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_18
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 131
+        width: 21
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_19
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 131
+        width: 25
+        height: 27
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_20
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 132
+        width: 24
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_21
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 95
+        width: 22
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_22
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 94
+        width: 21
+        height: 30
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_23
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 94
+        width: 21
+        height: 31
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_24
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 94
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_25
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 61
+        width: 24
+        height: 28
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_26
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 61
+        width: 23
+        height: 29
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_27
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 61
+        width: 23
+        height: 29
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_28
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 61
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_29
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 33
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_30
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 33
+        width: 24
+        height: 26
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_31
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ravager_Left_32
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.3, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
