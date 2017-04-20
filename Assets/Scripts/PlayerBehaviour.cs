@@ -38,7 +38,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         var oldpos = Position;
 
-        ///lvl 1
         if (Level == 0)
         {
             var x = Position.x;

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0e3e288963b020a4a8bcea8f5cc16a4e
-timeCreated: 1492227383
+timeCreated: 1492725890
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -103,9 +103,15 @@ TextureImporter:
         width: 186
         height: 153
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 11, y: 11, z: 11, w: 9}
+      outline:
+      - - {x: -93, y: 76.5}
+        - {x: -93, y: -72.5}
+        - {x: -89, y: -76.5}
+        - {x: 89, y: -76.5}
+        - {x: 93, y: -72.5}
+        - {x: 93, y: 76.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_1
@@ -116,9 +122,15 @@ TextureImporter:
         width: 186
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -91, y: 77}
+        - {x: -93, y: 74}
+        - {x: -93, y: -73}
+        - {x: -89, y: -77}
+        - {x: 93, y: -77}
+        - {x: 93, y: 77}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_2
@@ -129,9 +141,15 @@ TextureImporter:
         width: 186
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -91, y: 77}
+        - {x: -93, y: 74}
+        - {x: -93, y: -73}
+        - {x: -89, y: -77}
+        - {x: 93, y: -77}
+        - {x: 93, y: 77}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_3
@@ -142,9 +160,16 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -119}
+        - {x: -92, y: -128}
+        - {x: 99, y: -128}
+        - {x: 128, y: -50}
+        - {x: 128, y: 93}
+        - {x: 110, y: 128}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_4
@@ -155,9 +180,16 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -119}
+        - {x: -92, y: -128}
+        - {x: 99, y: -128}
+        - {x: 128, y: -50}
+        - {x: 128, y: 93}
+        - {x: 110, y: 128}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_5
@@ -168,9 +200,16 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -119}
+        - {x: -92, y: -128}
+        - {x: 99, y: -128}
+        - {x: 128, y: -50}
+        - {x: 128, y: 93}
+        - {x: 110, y: 128}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_6
@@ -181,9 +220,15 @@ TextureImporter:
         width: 664
         height: 155
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -332, y: 77.5}
+        - {x: -332, y: -71.5}
+        - {x: -331, y: -77.5}
+        - {x: 304, y: -77.5}
+        - {x: 332, y: -55.5}
+        - {x: 332, y: 77.5}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_7
@@ -194,9 +239,15 @@ TextureImporter:
         width: 664
         height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -301, y: 78}
+        - {x: -332, y: 49}
+        - {x: -332, y: -78}
+        - {x: 332, y: -78}
+        - {x: 332, y: 61}
+        - {x: 327, y: 78}
       tessellationDetail: 0
     - serializedVersion: 2
       name: buttonsweb_8
@@ -207,9 +258,16 @@ TextureImporter:
         width: 664
         height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -315, y: 78}
+        - {x: -332, y: 36}
+        - {x: -332, y: -37}
+        - {x: -315, y: -78}
+        - {x: 313, y: -78}
+        - {x: 332, y: -59}
+        - {x: 332, y: 78}
       tessellationDetail: 0
     outline: []
   spritePackingTag: buttons

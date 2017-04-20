@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
-public class EnvironmentBehaviour : MonoBehaviour
+public class EnvironmentBehaviour : MonoBehaviour, IUpgradeable
 {
+   
     public string label01;
     public TMP_Text m_textMeshPro;
     int counter;
@@ -52,5 +53,17 @@ public class EnvironmentBehaviour : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     }
+
+    public void Upgrade()
+    {
+        m_level++;
+    }
+
+    public void Downgrade()
+    {
+        m_level--;
+    }
+
+    public int Level { get { return m_level; } }
 }
 
