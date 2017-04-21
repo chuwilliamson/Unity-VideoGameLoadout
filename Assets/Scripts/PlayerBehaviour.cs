@@ -37,6 +37,12 @@ public class PlayerBehaviour : MonoBehaviour, IUpgradeable
     {
         Position = new Vector2(0, 0);
     }
+
+    void OnDisable()
+    {
+
+        Position = new Vector2(0, 0);
+    } 
     void Start()
     {
         PlayerMovementEvent.AddListener(DoMovement);
