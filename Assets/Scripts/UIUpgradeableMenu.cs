@@ -13,23 +13,27 @@ public class UIUpgradeableMenu : MonoBehaviour
         
         uitext = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         slider = GetComponentInChildren<Slider>();
-        uitext.text = Upgrade.name;
+        
         if(Upgrade == null)
-            return;
+               return;
+        uitext.text = Upgrade.name;
         SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
     }
     public void SetUpgrade(IUpgradeable upgrade)
     {
+        uitext.text = Upgrade.name;
         upgradeable = upgrade;
     }
     public void Increment()
     {
+        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
         upgradeable.Upgrade();
         slider.value = upgradeable.Level;
     }
 
     public void Decrement()
     {
+        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
         upgradeable.Downgrade();
         slider.value = upgradeable.Level;
     }
