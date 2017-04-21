@@ -983,10 +983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0689b13430ef7364ea93dde5ee62dcbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label01: 
-  terminalText: {fileID: 114445219222770838}
-  inputField: {fileID: 114977659546867242}
-  inputText: 
+  label01: '""'
+  m_textMeshPro: {fileID: 114445219222770838}
   _level: 0
 --- !u!114 &114870314497954596
 MonoBehaviour:

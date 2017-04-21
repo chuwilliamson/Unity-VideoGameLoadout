@@ -45,7 +45,7 @@ public class GameStateBehaviour : MonoBehaviour
     public void OnPlayerMove()
     {
         environmentBehaviour.DoText();
-        if (playerBehaviour.Position == new Vector2(2, 2)) LoadScene(3);
+        
     }
 
     public void LoadScene(int index)

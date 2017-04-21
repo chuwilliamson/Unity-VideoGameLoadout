@@ -13,7 +13,6 @@ using UnityEngine;
 ///     Position: <0,0> Dialogue: Breezy
 /// </summary>
 
-[ExecuteInEditMode]
 public class Node : MonoBehaviour
 {    
     public enum Habitants
@@ -57,26 +56,6 @@ public class Node : MonoBehaviour
         GenerateInformation();
     }
 
-    void Update()
-    {
-        if(Habitant == Habitants.NONE)
-        {
-            GetComponent<Renderer>().material.color = Color.white;
-        }
-        if (Habitant == Habitants.GOLD)
-        {
-            GetComponent<Renderer>().material.color = Color.yellow;
-        }
-        if (Habitant == Habitants.PIT)
-        {
-            GetComponent<Renderer>().material.color = Color.black;
-        }
-        if (Habitant == Habitants.WUMPUS)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
-    }
-
     public void GenerateInformation()
     {
         Dialogue = "";
@@ -89,11 +68,6 @@ public class Node : MonoBehaviour
             if (neighbor.Habitant == Habitants.PIT)
                 Dialogue += "You fell a breeze\n";
         }        
-    }
-
-    public void changeColor(Color col)
-    {
-        GetComponent<Renderer>().material.color = col;
     }
 
     public string NodeInformation()
