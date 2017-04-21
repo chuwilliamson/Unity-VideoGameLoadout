@@ -35,9 +35,11 @@ public class GameStateBehaviour : MonoBehaviour
         PlayerBehaviour.PlayerMovementEvent.AddListener(OnPlayerMove);
 
         environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
-        environmentBehaviour.gameObject.SetActive(false);
-
         gameBehaviour = gb.GetComponent<GameBehaviour>();
+
+        environmentBehaviour.gameObject.SetActive(false);
+        playerBehaviour.gameObject.SetActive(false);
+        gameBehaviour.gameObject.SetActive(false);
     }
 
     public void OnPlayerMove()
@@ -48,7 +50,19 @@ public class GameStateBehaviour : MonoBehaviour
 
     public void LoadScene(int index)
     {
-        if (index == 2) environmentBehaviour.gameObject.SetActive(true);
+        if(index == 2)
+        {
+            environmentBehaviour.gameObject.SetActive(true);
+            playerBehaviour.gameObject.SetActive(true);
+            gameBehaviour.gameObject.SetActive(true);
+        }
+        else
+        {
+            environmentBehaviour.gameObject.SetActive(false);
+            playerBehaviour.gameObject.SetActive(false);
+            gameBehaviour.gameObject.SetActive(false);
+        }
+
         SceneManager.LoadScene(index);
     }
 }

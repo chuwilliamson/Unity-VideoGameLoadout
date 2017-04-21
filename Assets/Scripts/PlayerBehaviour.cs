@@ -23,6 +23,10 @@ public class PlayerBehaviour : MonoBehaviour
         Debug.Log("moved");
     }
 
+    private void OnEnable()
+    {
+        Position = new Vector2(0, 0);
+    }
     private void Start()
     {
         PlayerMovementEvent.AddListener(DoMovement);
@@ -34,7 +38,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         var oldpos = Position;
 
-        ///lvl 1
         if (Level == 0)
         {
             var x = Position.x;
