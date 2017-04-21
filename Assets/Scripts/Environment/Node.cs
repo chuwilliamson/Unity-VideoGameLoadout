@@ -13,7 +13,6 @@ using UnityEngine;
 ///     Position: <0,0> Dialogue: Breezy
 /// </summary>
 
-[ExecuteInEditMode]
 public class Node : MonoBehaviour
 {    
     public enum Habitants
