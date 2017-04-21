@@ -66,6 +66,5 @@ public class UpgradableGame : MonoBehaviour, IUpgradeable
             CurrentUpgrade = Upgrades[Upgrades.IndexOf(CurrentUpgrade as MonoBehaviour) - 1] as IGameUpgrade;
         else
             SceneManager.LoadScene(0);
-        Debug.Log(CurrentUpgrade.GetType());
     }
 }
