@@ -9,25 +9,47 @@ public class UpgradableGame : MonoBehaviour
     public PlayerBehaviour Player;
     public Grid Environment;
 
-    List<string> UpgradeNames;
-
     public IGameUpgrade CurrentUpgrade;
+
+    public List<MonoBehaviour> Upgrades;
+
+    private void Awake()
+    {
+        ValidateUpgrades();
+    }
 
     public void Upgrade(IGameUpgrade upgrade)
     {
         if (upgrade != CurrentUpgrade)
+        {
             CurrentUpgrade = upgrade;
+        }
+    }
+
+    void ValidateUpgrades()
+    {
+        var validUpgrades = new List<MonoBehaviour>();
+        for(var i = 0; i < Upgrades.Count; i++)
+        {
+            if (Upgrades[i] is IGameUpgrade)
+                validUpgrades.Add(Upgrades[i]);
+            else
+            {
+                continue;
+            }
+        }
+        Upgrades = validUpgrades;
     }
 
     void Update()
     {
         if (CurrentUpgrade == null)
         {
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
         else
         {
-            CurrentUpgrade.VicotryCondition();
+            CurrentUpgrade.GameUpdate(Player);
         }
     }
 }
