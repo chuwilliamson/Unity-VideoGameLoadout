@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InputInstructionText : MonoBehaviour, IUpgradeable
 {
-    int InstructionsLevel;
+    int _level;
 
     //String values for instructions
     string L1 =
@@ -23,39 +23,32 @@ public class InputInstructionText : MonoBehaviour, IUpgradeable
 
     public int Level
     {
-        get { return InstructionsLevel; }
+        get { return _level; }
     }
 
     public void Upgrade()
     {
-        InstructionsLevel++;
-        if (InstructionsLevel >= 2)
+        _level++;
+        if (_level >= 2)
         {
-            InstructionsLevel = 2;
+            _level = 2;
         }
     }
 
     public void Downgrade()
     {
-        InstructionsLevel--;
-        if (InstructionsLevel <= 0)
+        _level--;
+        if (_level <= 0)
         {
-            InstructionsLevel = 0;
+            _level = 0;
         }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        //gets the starting level for the Player
-        InstructionsLevel = GameStateBehaviour.Instance.playerBehaviour.Level;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Changes the instruction text based on Player Level
-        switch (InstructionsLevel)
+        switch (_level)
         {
             default:
                 gameObject.GetComponent<Text>().text = L1;

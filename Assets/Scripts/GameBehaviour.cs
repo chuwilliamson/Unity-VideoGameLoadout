@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour, IUpgradeable
 {
-
     // Use this for initialization
     void Start()
     {
@@ -14,10 +13,10 @@ public class GameBehaviour : MonoBehaviour, IUpgradeable
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private int m_level;
+
     public void Upgrade()
     {
         m_level++;
@@ -33,4 +32,3 @@ public class GameBehaviour : MonoBehaviour, IUpgradeable
         get { return m_level; }
     }
 }
-

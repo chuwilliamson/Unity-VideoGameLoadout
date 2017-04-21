@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class EventPlayer : UnityEvent { }
@@ -11,4 +12,5 @@ public interface IUpgradeable
     void Downgrade();
     int Level { get;}
 }
+
 
