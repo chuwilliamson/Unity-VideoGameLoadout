@@ -5,7 +5,7 @@ using System;
 
 public interface IGameUpgrade
 {
-    void VicotryCondition(PlayerBehaviour player);
+    void VictoryCondition();
 
-    void GameUpdate(PlayerBehaviour player);
+    void GameUpdate();
 }

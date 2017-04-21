@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameUpgradeOne : MonoBehaviour, IGameUpgrade
 {
-    public void VicotryCondition(PlayerBehaviour player)
+    public void VictoryCondition()
     {
-        if (GetComponent<UpgradableGame>().Player.Position == GetComponent<UpgradableGame>().Environment.Exit.Position)
+        if (GameStateBehaviour.Instance.playerBehaviour.Position == GetComponent<UpgradableGame>().Environment.Exit.Position)
         {
-            SceneManager.LoadScene(3);
+            GameStateBehaviour.Instance.LoadScene(3);
         }
     }
 
-    public void GameUpdate(PlayerBehaviour player)
+    public void GameUpdate()
     {
-        VicotryCondition(player);
+        VictoryCondition();
     }    
 }
