@@ -40,7 +40,8 @@ public class Grid : MonoBehaviour
 
     private void Awake()
     {
-        DeleteGrid();
+        if (Nodes.Count > 0)
+            return;
         GenerateNodes();
         if (isRandom)
         {
@@ -50,14 +51,14 @@ public class Grid : MonoBehaviour
         }
         else
         {
-            Dictionary<Vector2, string> Test = new Dictionary<Vector2, string>();
-            Test.Add(new Vector2(0, 0), "start");
-            Test.Add(new Vector2(2, 0), "pit");
-            Test.Add(new Vector2(2, 2), "pit");
-            Test.Add(new Vector2(3, 3), "pit");
-            Test.Add(new Vector2(0, 2), "wumpus");
-            Test.Add(new Vector2(1, 2), "gold");
-            SetGridValues(Test);
+            Dictionary<Vector2, string> DefaultGrid = new Dictionary<Vector2, string>();
+            DefaultGrid.Add(new Vector2(0, 0), "start");
+            DefaultGrid.Add(new Vector2(2, 0), "pit");
+            DefaultGrid.Add(new Vector2(2, 2), "pit");
+            DefaultGrid.Add(new Vector2(3, 3), "pit");
+            DefaultGrid.Add(new Vector2(0, 2), "wumpus");
+            DefaultGrid.Add(new Vector2(1, 2), "gold");
+            SetGridValues(DefaultGrid);
         }
     }
 
@@ -125,18 +126,20 @@ public class Grid : MonoBehaviour
     [ContextMenu("Reset")]
     void ResetGrid()
     {
+        this.Entrance = null;
+        this.Exit = null;
         foreach(var node in this.Nodes)
         {
             node.Habitant = Node.Habitants.NONE;
-            node.name = "Node";
+            node.name = node.Position.x.ToString() + node.Position.y.ToString();
         }
     }
 
     [ContextMenu("Randomize")]
     void RandomizeNodes()
     {
-        PlaceStart();
         ResetGrid();
+        PlaceStart();
         PlacePits();
         PlaceWumpus();
         PlaceGold();       
@@ -144,13 +147,12 @@ public class Grid : MonoBehaviour
 
     void PlaceStart()
     {
-        Entrance = this.Nodes[Random.Range(0, this.Nodes.Count)];
-        Entrance.name = "Entrance";
-        Entrance.changeColor(Color.green);
+        this.Entrance = this.Nodes[Random.Range(0, this.Nodes.Count)];
         if(Entrance.Habitant != Node.Habitants.NONE)
         {
             PlaceStart();
         }
+        Entrance.name += " Entrance";
     }
 
     void PlacePits()
@@ -166,7 +168,7 @@ public class Grid : MonoBehaviour
             if (index % 5 == 0)
             {
                 node.Habitant = Node.Habitants.PIT;
-                node.name = "Pit " + currentPitCount;
+                node.name += " Pit";
                 currentPitCount++;
             }
         }
@@ -185,7 +187,7 @@ public class Grid : MonoBehaviour
             if (index % 5 == 0 && currentWumpusCount < NumWumpus)
             {
                 node.Habitant = Node.Habitants.WUMPUS;
-                node.name = "Wumpus " + currentWumpusCount;
+                node.name += " Wumpus";
                 currentWumpusCount++;
             }
         }
@@ -205,7 +207,7 @@ public class Grid : MonoBehaviour
             {
                 node.Habitant = Node.Habitants.GOLD;
                 Exit = node;
-                node.name = "Gold " + currentGoldCount;
+                node.name += " Gold";
                 currentGoldCount++;
             }
         }
@@ -225,6 +227,7 @@ public class Grid : MonoBehaviour
                 var newNode = Instantiate(Resources.Load("NodePrefab",typeof(Node)), this.transform) as Node;
                 newNode.Position = new Vector2(i, j);
                 newNode.transform.position = newNode.Position + new Vector2(xOffSet, yOffSet);
+                newNode.name = i.ToString() + j.ToString();
                 this.Nodes.Add(newNode);
                 yOffSet += 1;
             }
