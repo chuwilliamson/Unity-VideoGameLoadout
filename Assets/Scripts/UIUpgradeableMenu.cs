@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class UIUpgradeableMenu : MonoBehaviour
@@ -7,34 +8,46 @@ public class UIUpgradeableMenu : MonoBehaviour
     IUpgradeable upgradeable;
     Slider slider;
     TMPro.TextMeshProUGUI uitext;
-    public GameObject Upgrade;
+
+    public GameObject UpgradeableReferenceGameObject;
+
+    private void Awake()
+    {
+        uitext = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        uitext.SetText("");
+    }
     private void Start()
     {
-        
-        uitext = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         slider = GetComponentInChildren<Slider>();
         
-        if(Upgrade == null)
+        if(UpgradeableReferenceGameObject == null)
                return;
-        uitext.text = Upgrade.name;
-        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
+        SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
+    }
+
+    public void UISetUpgrade(TMP_Dropdown tmp)
+    {
+        upgradeable = GameStateBehaviour.Instance.upgradeDict[tmp.itemText.text];
+        uitext.SetText(string.Format(" <#ffa000>{0}</color> <sprite={1}>", UpgradeableReferenceGameObject.name, upgradeable.Level));
     }
     public void SetUpgrade(IUpgradeable upgrade)
     {
-        uitext.text = Upgrade.name;
         upgradeable = upgrade;
-    }
+        uitext.SetText(string.Format(" <#ffa000>{0}</color> <sprite={1}>", UpgradeableReferenceGameObject.name, upgradeable.Level));
+        
+    } 
     public void Increment()
     {
-        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
+        SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
         upgradeable.Upgrade();
         slider.value = upgradeable.Level;
     }
 
     public void Decrement()
     {
-        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
+        SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
         upgradeable.Downgrade();
         slider.value = upgradeable.Level;
     }
+
 }

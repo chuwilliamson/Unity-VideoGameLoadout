@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UpgradableGame : MonoBehaviour, IUpgradeable 
+public class UpgradableGame : GameBehaviour
 {
     public Grid Environment;
 
