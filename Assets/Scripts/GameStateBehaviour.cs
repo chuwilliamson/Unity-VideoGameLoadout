@@ -1,20 +1,29 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameStateBehaviour : MonoBehaviour
 {
     public static GameStateBehaviour Instance;
+
     public PlayerBehaviour playerBehaviour;
+
     public EnvironmentBehaviour environmentBehaviour;
+
     public GameBehaviour gameBehaviour;
+
     public Dictionary<string, IUpgradeable> upgradeDict;
-    
+
     public List<IUpgradeable> Upgradeables;
+
+    private List<GameObject> behaviours;
+
+    bool preloaded = false;
+
     void Awake()
     {
-        
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -24,54 +33,58 @@ public class GameStateBehaviour : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
-    
-        var playerPrefab = Resources.Load("PlayerBehaviour");
-        var gamePrefab = Resources.Load("UpgradeableGame");
-        var environmentPrefab = Resources.Load("EnvironmentBehaviour");
 
-        var pb = Instantiate(playerPrefab, transform) as GameObject;
-        var eb = Instantiate(environmentPrefab,transform) as GameObject;
-        var gb = Instantiate(gamePrefab, transform) as GameObject;
+        GameObject pb, eb, gb;
 
-        playerBehaviour = pb.GetComponent<PlayerBehaviour>();
-        PlayerBehaviour.PlayerMovementEvent.AddListener(OnPlayerMove);
+        if (!preloaded)
+        {
+            var playerPrefab = Resources.Load("PlayerBehaviour");
+            var gamePrefab = Resources.Load("UpgradeableGame");
+            var environmentPrefab = Resources.Load("EnvironmentBehaviour");
 
-        environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
-        gameBehaviour = gb.GetComponent<GameBehaviour>();
+            pb = Instantiate(playerPrefab, transform) as GameObject;
+            eb = Instantiate(environmentPrefab, transform) as GameObject;
+            gb = Instantiate(gamePrefab, transform) as GameObject;
 
-        
-        environmentBehaviour.gameObject.SetActive(false);
-        playerBehaviour.gameObject.SetActive(false);
-        gameBehaviour.gameObject.SetActive(false);
+            playerBehaviour = pb.GetComponent<PlayerBehaviour>();
 
-        Upgradeables = new List<IUpgradeable>() {playerBehaviour, environmentBehaviour, gameBehaviour};
+            environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
+            gameBehaviour = gb.GetComponent<GameBehaviour>();
+        }
+        else
+        {
+            pb = FindObjectOfType<PlayerBehaviour>().gameObject;
+            eb = FindObjectOfType<EnvironmentBehaviour>().gameObject;
+            gb = FindObjectOfType<GameBehaviour>().gameObject;
+        }
+
+        playerBehaviour.PlayerMovementEvent.AddListener(OnPlayerMove);
+
+        Upgradeables = new List<IUpgradeable>() { playerBehaviour, environmentBehaviour, gameBehaviour };
+
+        behaviours = new List<GameObject>() { pb, eb, gb };
+        behaviours.ForEach(go => go.SetActive(false));
+
         upgradeDict = new Dictionary<string, IUpgradeable>();
         Upgradeables.ForEach(u => upgradeDict.Add(u.GetType().ToString(), u));
-        foreach (var kvp in upgradeDict)
-        {
-            print(kvp.Key);
-        }
-
     }
-
-    public void GetUpgrade(string value)
+    
+    public IUpgradeable GetUpgrade(string value)
     {
         IUpgradeable v;
-        if (upgradeDict.TryGetValue(value, out v))
-        {
-            print(v);
-        }
-
+        if (upgradeDict.TryGetValue(value, out v)) return v;
+        return null;
     }
 
     public void OnPlayerMove()
     {
-        environmentBehaviour.DoText();
+        var text = string.Format("{0}, {1}\n", playerBehaviour.Position.ToString(), 0);
+        environmentBehaviour.DoText(text);
     }
 
     public void LoadScene(int index)
     {
-        if(index == 2)
+        if (index == (int)Level.PLAYER)
         {
             environmentBehaviour.gameObject.SetActive(true);
             playerBehaviour.gameObject.SetActive(true);

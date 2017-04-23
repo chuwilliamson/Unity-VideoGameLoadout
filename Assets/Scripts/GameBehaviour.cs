@@ -1,32 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour, IUpgradeable
 {
-    private int _level;
-    // Use this for initialization
-    void Start()
+    public int Level
     {
-        _level = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void Upgrade()
-    {
-        _level = (_level < 3) ? ++_level : 3;
-
-
+        get
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public void Downgrade()
     {
-        _level = (_level > 0) ? --_level : 0;
+        throw new NotImplementedException();
     }
 
-    public int Level { get { return _level; } }
+    public void Upgrade()
+    {
+        throw new NotImplementedException();
+    }
 }

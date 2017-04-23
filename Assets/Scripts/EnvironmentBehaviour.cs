@@ -1,70 +1,67 @@
-﻿
+﻿using System.Collections;
+
+using TMPro;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using TMPro;
+
 public class EnvironmentBehaviour : MonoBehaviour, IUpgradeable
 {
+    public string _terminalText;
 
-    public string label01;
-    public TMP_Text m_textMeshPro;
+    public TMP_Text _textMeshPro;
+
     int _counter;
+
     int _visibleCount;
-    
+
     [SerializeField]
     [Range(0, 3)]
-    int _level =0;
+    int _level = 0;
 
     void Awake()
     {
-        print("awake on EnvironmentBehaviour");
-        m_textMeshPro.text = label01;
-        m_textMeshPro.enableWordWrapping = true;
-        m_textMeshPro.alignment = TextAlignmentOptions.BottomLeft;
+        _textMeshPro.text = _terminalText;
+        _textMeshPro.enableWordWrapping = true;
+        _textMeshPro.alignment = TextAlignmentOptions.BottomLeft;
     }
 
     void OnEnable()
     {
         _counter = 0;
         _visibleCount = 0;
-        label01 = "";
-        m_textMeshPro.text = label01;
+        _terminalText = string.Empty;
+        _textMeshPro.text = _terminalText;
     }
 
-    public void DoText()
+    public void DoText(string text)
     {
-        print("do text");
         StopCoroutine("StartUp");
-        var pos = GameStateBehaviour.Instance.playerBehaviour.Position;
-        label01 += pos + "\n"
-            + FindObjectOfType<Grid>().GetNode(pos).Dialogue;
-        m_textMeshPro.text = label01;
+        _terminalText += text;
+        _textMeshPro.text = _terminalText;
         StartCoroutine("StartUp");
     }
 
     IEnumerator StartUp()
     {
         // Force and update of the mesh to get valid information.
-        m_textMeshPro.ForceMeshUpdate();
-        var totalVisibleCharacters = m_textMeshPro.textInfo.characterCount; // Get # of Visible Character in text object
-        while(_visibleCount < m_textMeshPro.textInfo.characterCount)
+        _textMeshPro.ForceMeshUpdate();
+        var totalVisibleCharacters = _textMeshPro.textInfo.characterCount; // Get # of Visible Character in text object
+        while (_visibleCount < _textMeshPro.textInfo.characterCount)
         {
             _visibleCount = _counter % (totalVisibleCharacters + 1);
-            m_textMeshPro.maxVisibleCharacters = _visibleCount; // How many characters should TextMeshPro display?
+            _textMeshPro.maxVisibleCharacters = _visibleCount; // How many characters should TextMeshPro display?
 
             // Once the last character has been revealed, wait 1.0 second and start over.
-
             _counter += 1;
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
     public void Upgrade()
     {
         _level = (_level < 3) ? ++_level : 3;
-        
-
     }
 
     public void Downgrade()
@@ -72,6 +69,11 @@ public class EnvironmentBehaviour : MonoBehaviour, IUpgradeable
         _level = (_level > 0) ? --_level : 0;
     }
 
-    public int Level { get { return _level; } }
+    public int Level
+    {
+        get
+        {
+            return _level;
+        }
+    }
 }
-

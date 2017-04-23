@@ -1,53 +1,80 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using TMPro;
+
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
+[ExecuteInEditMode]
 public class UIUpgradeableMenu : MonoBehaviour
 {
-    IUpgradeable upgradeable;
-    Slider slider;
-    TMPro.TextMeshProUGUI uitext;
+    IUpgradeable _upgradeable;
+
+    Slider _slider;
+
+    TextMeshProUGUI _headerTextMeshProUgui;
 
     public GameObject UpgradeableReferenceGameObject;
 
-    private void Awake()
+    void Awake()
     {
-        uitext = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        uitext.SetText("");
+        _headerTextMeshProUgui = GetComponentInChildren<TextMeshProUGUI>();
+        _headerTextMeshProUgui.SetText(string.Empty);
     }
-    private void Start()
+
+    private void OnEnable()
     {
-        slider = GetComponentInChildren<Slider>();
-        
-        if(UpgradeableReferenceGameObject == null)
-               return;
+        var canvas = transform.GetComponentInParent<Canvas>();
+        if (canvas == null) transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+        _headerTextMeshProUgui = GetComponentInChildren<TextMeshProUGUI>();
+        _headerTextMeshProUgui.SetText(string.Empty);
+    }
+
+    void Start()
+    {
+        _slider = GetComponentInChildren<Slider>();
+
+        if (UpgradeableReferenceGameObject == null) return;
         SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
     }
 
     public void UISetUpgrade(TMP_Dropdown tmp)
     {
-        upgradeable = GameStateBehaviour.Instance.upgradeDict[tmp.itemText.text];
-        uitext.SetText(string.Format(" <#ffa000>{0}</color> <sprite={1}>", UpgradeableReferenceGameObject.name, upgradeable.Level));
+        int index = tmp.value;
+        string val = tmp.options[index].text;
+        _upgradeable = GameStateBehaviour.Instance.upgradeDict[val];
+        RefreshShownValues();
     }
+
     public void SetUpgrade(IUpgradeable upgrade)
     {
-        upgradeable = upgrade;
-        uitext.SetText(string.Format(" <#ffa000>{0}</color> <sprite={1}>", UpgradeableReferenceGameObject.name, upgradeable.Level));
-        
-    } 
+        _upgradeable = upgrade;
+        RefreshShownValues();
+    }
+
+    private void RefreshShownValues()
+    {
+        _headerTextMeshProUgui.SetText(
+            string.Format(
+                " <#ffa000><size=125%>{0}</size></color> <sprite={1}>",
+                _upgradeable.GetType().ToString(),
+                _upgradeable.Level));
+        _slider.value = _upgradeable.Level;
+    }
+
     public void Increment()
     {
-        SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
-        upgradeable.Upgrade();
-        slider.value = upgradeable.Level;
+        if (_upgradeable == null) return;
+        _upgradeable.Upgrade();
+        RefreshShownValues();
     }
 
     public void Decrement()
     {
-        SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
-        upgradeable.Downgrade();
-        slider.value = upgradeable.Level;
+        if (_upgradeable == null) return;
+        _upgradeable.Downgrade();
+        RefreshShownValues();
     }
-
 }
