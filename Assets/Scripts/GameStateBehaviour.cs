@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-
+﻿
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+using System.Collections.Generic;
 
 public class GameStateBehaviour : MonoBehaviour
 {
@@ -20,6 +20,9 @@ public class GameStateBehaviour : MonoBehaviour
 
     private List<GameObject> behaviours;
 
+    [SerializeField]
+    private GameObject HUD; 
+
     bool preloaded = false;
 
     void Awake()
@@ -36,10 +39,12 @@ public class GameStateBehaviour : MonoBehaviour
 
         GameObject pb, eb, gb;
 
+        
+
         if (!preloaded)
         {
             var playerPrefab = Resources.Load("PlayerBehaviour");
-            var gamePrefab = Resources.Load("UpgradeableGame");
+            var gamePrefab = Resources.Load("GameBehaviour");
             var environmentPrefab = Resources.Load("EnvironmentBehaviour");
 
             pb = Instantiate(playerPrefab, transform) as GameObject;
@@ -47,7 +52,6 @@ public class GameStateBehaviour : MonoBehaviour
             gb = Instantiate(gamePrefab, transform) as GameObject;
 
             playerBehaviour = pb.GetComponent<PlayerBehaviour>();
-
             environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
             gameBehaviour = gb.GetComponent<GameBehaviour>();
         }
@@ -68,7 +72,7 @@ public class GameStateBehaviour : MonoBehaviour
         upgradeDict = new Dictionary<string, IUpgradeable>();
         Upgradeables.ForEach(u => upgradeDict.Add(u.GetType().ToString(), u));
     }
-    
+ 
     public IUpgradeable GetUpgrade(string value)
     {
         IUpgradeable v;
@@ -80,6 +84,14 @@ public class GameStateBehaviour : MonoBehaviour
     {
         var text = string.Format("{0}, {1}\n", playerBehaviour.Position.ToString(), 0);
         environmentBehaviour.DoText(text);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            HUD.SetActive(!HUD.activeSelf);
+        }
     }
 
     public void LoadScene(int index)

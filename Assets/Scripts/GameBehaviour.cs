@@ -3,21 +3,31 @@ using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour, IUpgradeable
 {
-    public int Level
+    private UpgradableGame m_instance;
+
+    public int GameLevel;
+    public int Level{ get { return m_instance.Level; } }
+ 
+    public void Awake()
     {
-        get
-        {
-            throw new NotImplementedException();
-        }
+        
+        var obj = Resources.Load("UpgradeableGame");
+        var ug = Instantiate(obj, transform) as GameObject;
+        m_instance = ug.GetComponent<UpgradableGame>();
+    }
+
+    public void Start()
+    {
+        GameLevel = Level;
     }
 
     public void Downgrade()
     {
-        throw new NotImplementedException();
+        m_instance.Downgrade();
     }
 
     public void Upgrade()
     {
-        throw new NotImplementedException();
+        m_instance.Upgrade();
     }
 }

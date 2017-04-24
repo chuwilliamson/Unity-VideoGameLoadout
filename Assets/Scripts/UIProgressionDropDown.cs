@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using TMPro;
+﻿using TMPro;
 
 using UnityEngine;
 
@@ -10,9 +7,16 @@ public class UIProgressionDropDown : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        var opts = GetComponent<TMP_Dropdown>().options;
-        opts.Clear();
+        var dropdown = GetComponent<TMP_Dropdown>();
+        
         GameStateBehaviour.Instance.Upgradeables.ForEach(
-            u => opts.Add(new TMP_Dropdown.OptionData(u.GetType().ToString())));
+            u => dropdown.options.Add(new TMP_Dropdown.OptionData(u.GetType().ToString())));
     }
+
+    private void OnDisable()
+    {
+        var dropdown = GetComponent<TMP_Dropdown>();
+        dropdown.ClearOptions();
+    }
+
 }
