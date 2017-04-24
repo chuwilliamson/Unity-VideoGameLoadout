@@ -6,24 +6,28 @@ public class GameStateBehaviour : MonoBehaviour
 {
     public static GameStateBehaviour Instance;
 
+    public EventGameState onUpgradeChange = new EventGameState();
+
     public PlayerBehaviour playerBehaviour;
 
     public EnvironmentBehaviour environmentBehaviour;
 
     public GameBehaviour gameBehaviour;
 
-    public Dictionary<string, IUpgradeable> upgradeDict;
+    public Dictionary<string, IUpgradeable> UpgradeDict = new Dictionary<string, IUpgradeable>();
 
-    public List<IUpgradeable> Upgradeables;
+    public List<IUpgradeable> Upgradeables = new List<IUpgradeable>();
 
-    private List<GameObject> behaviours;
+    private List<GameObject> behaviours = new List<GameObject>();
 
-    [SerializeField]
-    private GameObject HUD;
+    [SerializeField] private GameObject HUD;
+
+    bool initializing;
 
     void Awake()
     {
-        if(Instance != null)
+        initializing = true;
+        if (Instance != null)
         {
             Destroy(gameObject);
         }
@@ -45,37 +49,33 @@ public class GameStateBehaviour : MonoBehaviour
         environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
         gameBehaviour = gb.GetComponent<GameBehaviour>();
 
-
-
         playerBehaviour.PlayerMovementEvent.AddListener(OnPlayerMove);
 
-        Upgradeables = new List<IUpgradeable>() { playerBehaviour, environmentBehaviour, gameBehaviour };
+        behaviours = new List<GameObject>() {pb, eb, gb};
 
-        behaviours = new List<GameObject>() { pb, eb, gb };
         behaviours.ForEach(go => go.SetActive(false));
-
-        upgradeDict = new Dictionary<string, IUpgradeable>();
-        Upgradeables.ForEach(u => upgradeDict.Add(u.GetType().ToString(), u));
+        initializing = false;
     }
 
     public IUpgradeable GetUpgrade(string value)
     {
         IUpgradeable v;
-        if(upgradeDict.TryGetValue(value, out v)) return v;
+        if (UpgradeDict.TryGetValue(value, out v)) return v;
         return null;
     }
 
     public void OnPlayerMove()
     {
-        var text = string.Format("{0}, {1}\n", playerBehaviour.Position.ToString(), 0);
+        var envinfo = FindObjectOfType<Grid>().GetNode(playerBehaviour.Position).Dialogue;
+        var text = string.Format("{0}, {1}\n", playerBehaviour.Position, envinfo);
         environmentBehaviour.DoText(text);
     }
 
-    private void Update()
+    void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            for(int i = 0; i < HUD.transform.childCount; ++i)
+            for (int i = 0; i < HUD.transform.childCount; ++i)
             {
                 var immediateChildGo = HUD.transform.GetChild(i).gameObject;
                 immediateChildGo.SetActive(!immediateChildGo.activeSelf);
@@ -83,9 +83,49 @@ public class GameStateBehaviour : MonoBehaviour
         }
     }
 
+    public void UnregisterUpgrade(IUpgradeable upgrade)
+    {
+        var key = upgrade.GetType().ToString();
+
+        if (!UpgradeDict.ContainsKey(key))
+        {
+            Debug.Log("can not remove a key that isn't in the dictionary");
+            return;
+        }
+
+        UpgradeDict.Remove(key);
+        Upgradeables.Remove(upgrade);
+        Debug.Log("UnRegister " + key);
+        Debug.Log("dictionary @ " + UpgradeDict.Count);
+        onUpgradeChange.Invoke();
+    }
+
+    public void RegisterUpgrade(IUpgradeable upgrade)
+    {
+        var key = upgrade.GetType().ToString();
+
+        if (UpgradeDict.ContainsKey(key))
+        {
+            Debug.LogWarning("Tried to add upgrade already present in dictionary aborting...");
+            return;
+        }
+        Upgradeables.Add(upgrade);
+        UpgradeDict.Add(upgrade.GetType().ToString(), upgrade);
+        onUpgradeChange.Invoke();
+        Debug.Log("Register " + key);
+        Debug.Log("dictionary @ " + UpgradeDict.Count);
+    }
+
+    public int UpgradeCount
+    {
+        get { return Upgradeables.Count; }
+    }
+
     public void LoadScene(int index)
     {
-        if(index == (int)Level.PLAYER)
+        if (initializing)
+            return;
+        if (index == (int) Level.Player)
         {
             environmentBehaviour.gameObject.SetActive(true);
             playerBehaviour.gameObject.SetActive(true);

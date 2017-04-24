@@ -713,7 +713,7 @@ Prefab:
     - target: {fileID: 224238760108721560, guid: 6b169c6db9a40a442befa9a0a4ddc618,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114595908473069976, guid: 6b169c6db9a40a442befa9a0a4ddc618,
         type: 2}

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
@@ -44,7 +43,7 @@ public class UIUpgradeableMenu : MonoBehaviour
     {
         int index = tmp.value;
         string val = tmp.options[index].text;
-        _upgradeable = GameStateBehaviour.Instance.upgradeDict[val];
+        _upgradeable = GameStateBehaviour.Instance.UpgradeDict[val];
         RefreshShownValues();
     }
 

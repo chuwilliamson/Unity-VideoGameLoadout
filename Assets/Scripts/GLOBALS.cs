@@ -2,12 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventPlayer : UnityEvent
-{
-    public EventPlayer()
-    {
-    }
-}
+public class EventPlayer : UnityEvent { }
 public class EventGameState : UnityEvent { }
 public class EventEnvironment : UnityEvent { }
 
@@ -20,8 +15,8 @@ public interface IUpgradeable
 
 public enum Level
 {
-    MAIN = 0,
-    ENVIRONMENT = 1,
-    PLAYER = 2,
-    CREDITS = 3,
+    Main = 0,
+    Environment = 1,
+    Player = 2,
+    Credits = 3,
 }

@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4239545520227428}
   - component: {fileID: 114804194597644566}
+  - component: {fileID: 114921223083794880}
   m_Layer: 0
   m_Name: EnvironmentBehaviour
   m_TagString: Untagged
@@ -90,6 +91,7 @@ GameObject:
   - component: {fileID: 222177600128307032}
   - component: {fileID: 114531000805449822}
   - component: {fileID: 114615422537237328}
+  - component: {fileID: 114516512861118692}
   m_Layer: 5
   m_Name: InstructionsText
   m_TagString: Untagged
@@ -296,6 +298,17 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114516512861118692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1488047448354676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc293d62e21388f46a85c6e3ab92de99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114531000805449822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +396,17 @@ MonoBehaviour:
   _terminalText: 
   _textMeshPro: {fileID: 114445219222770838}
   _level: 0
+--- !u!114 &114921223083794880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063515694755320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc293d62e21388f46a85c6e3ab92de99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114937867835973994
 MonoBehaviour:
   m_ObjectHideFlags: 1
