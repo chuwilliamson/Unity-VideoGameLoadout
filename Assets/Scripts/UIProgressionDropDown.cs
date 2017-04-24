@@ -1,17 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
+
 using UnityEngine;
-using TMPro;
-public class UIProgressionDropDown : MonoBehaviour {
-    
+
+public class UIProgressionDropDown : MonoBehaviour
+{
     // Use this for initialization
-    void Start ()
+    void OnEnable()
     {
-        GetComponent<TMP_Dropdown>().options = null;
+        var dropdown = GetComponent<TMP_Dropdown>();
+        
+        GameStateBehaviour.Instance.Upgradeables.ForEach(
+            u => dropdown.options.Add(new TMP_Dropdown.OptionData(u.GetType().ToString())));
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void OnDisable()
+    {
+        var dropdown = GetComponent<TMP_Dropdown>();
+        dropdown.ClearOptions();
+    }
+
 }

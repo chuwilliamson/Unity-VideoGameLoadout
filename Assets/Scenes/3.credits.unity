@@ -340,7 +340,7 @@ Prefab:
     - target: {fileID: 224620609522898360, guid: 9d9bb83b651da9640b45d7af81366d68,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -28.391727
+      value: -28.47963
       objectReference: {fileID: 0}
     - target: {fileID: 224620609522898360, guid: 9d9bb83b651da9640b45d7af81366d68,
         type: 2}
@@ -648,68 +648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9907a3d0bd785394fbe105edbd0668ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1504886927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1504886930}
-  - component: {fileID: 1504886929}
-  - component: {fileID: 1504886928}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1504886928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1504886927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1504886929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1504886927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
---- !u!4 &1504886930
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1504886927}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1613492798
 Prefab:
   m_ObjectHideFlags: 0
@@ -770,7 +708,7 @@ Prefab:
     - target: {fileID: 224620609522898360, guid: 9d9bb83b651da9640b45d7af81366d68,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -28.391727
+      value: -28.47963
       objectReference: {fileID: 0}
     - target: {fileID: 224620609522898360, guid: 9d9bb83b651da9640b45d7af81366d68,
         type: 2}

@@ -1,40 +1,80 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
+using TMPro;
+
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
+[ExecuteInEditMode]
 public class UIUpgradeableMenu : MonoBehaviour
 {
-    IUpgradeable upgradeable;
-    Slider slider;
-    TMPro.TextMeshProUGUI uitext;
-    public GameObject Upgrade;
-    private void Start()
+    IUpgradeable _upgradeable;
+
+    Slider _slider;
+
+    TextMeshProUGUI _headerTextMeshProUgui;
+
+    public GameObject UpgradeableReferenceGameObject;
+
+    void Awake()
     {
-        
-        uitext = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        slider = GetComponentInChildren<Slider>();
-        
-        if(Upgrade == null)
-               return;
-        uitext.text = Upgrade.name;
-        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
+        _headerTextMeshProUgui = GetComponentInChildren<TextMeshProUGUI>();
+        _headerTextMeshProUgui.SetText(string.Empty);
     }
+
+    private void OnEnable()
+    {
+        var canvas = transform.GetComponentInParent<Canvas>();
+        if (canvas == null) transform.SetParent(FindObjectOfType<Canvas>().transform, false);
+        _headerTextMeshProUgui = GetComponentInChildren<TextMeshProUGUI>();
+        _headerTextMeshProUgui.SetText(string.Empty);
+    }
+
+    void Start()
+    {
+        _slider = GetComponentInChildren<Slider>();
+
+        if (UpgradeableReferenceGameObject == null) return;
+        SetUpgrade(UpgradeableReferenceGameObject.GetComponent<IUpgradeable>());
+    }
+
+    public void UISetUpgrade(TMP_Dropdown tmp)
+    {
+        int index = tmp.value;
+        string val = tmp.options[index].text;
+        _upgradeable = GameStateBehaviour.Instance.upgradeDict[val];
+        RefreshShownValues();
+    }
+
     public void SetUpgrade(IUpgradeable upgrade)
     {
-        uitext.text = Upgrade.name;
-        upgradeable = upgrade;
+        _upgradeable = upgrade;
+        RefreshShownValues();
     }
+
+    private void RefreshShownValues()
+    {
+        _headerTextMeshProUgui.SetText(
+            string.Format(
+                " <#ffa000><size=125%>{0}</size></color> <sprite={1}>",
+                _upgradeable.GetType().ToString(),
+                _upgradeable.Level));
+        _slider.value = _upgradeable.Level;
+    }
+
     public void Increment()
     {
-        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
-        upgradeable.Upgrade();
-        slider.value = upgradeable.Level;
+        if (_upgradeable == null) return;
+        _upgradeable.Upgrade();
+        RefreshShownValues();
     }
 
     public void Decrement()
     {
-        SetUpgrade(Upgrade.GetComponent<IUpgradeable>());
-        upgradeable.Downgrade();
-        slider.value = upgradeable.Level;
+        if (_upgradeable == null) return;
+        _upgradeable.Downgrade();
+        RefreshShownValues();
     }
 }

@@ -1,32 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class GameBehaviour : MonoBehaviour, IUpgradeable
 {
-    private int _level;
-    // Use this for initialization
-    void Start()
+    private UpgradableGame m_instance;
+
+    public int GameLevel;
+    public int Level{ get { return m_instance.Level; } }
+ 
+    public void Awake()
     {
-        _level = 0;
+        
+        var obj = Resources.Load("UpgradeableGame");
+        var ug = Instantiate(obj, transform) as GameObject;
+        m_instance = ug.GetComponent<UpgradableGame>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-    }
-
-    public void Upgrade()
-    {
-        _level = (_level < 3) ? ++_level : 3;
-
-
+        GameLevel = Level;
     }
 
     public void Downgrade()
     {
-        _level = (_level > 0) ? --_level : 0;
+        m_instance.Downgrade();
     }
 
-    public int Level { get { return _level; } }
+    public void Upgrade()
+    {
+        m_instance.Upgrade();
+    }
 }

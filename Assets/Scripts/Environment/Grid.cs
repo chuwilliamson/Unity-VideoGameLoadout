@@ -101,7 +101,7 @@ public class Grid : MonoBehaviour
             node.GetNeighbors(this);
     }
 
-    Node GetNode(Vector2 position)
+    public Node GetNode(Vector2 position)
     {
         foreach(var node in this.Nodes)
         {

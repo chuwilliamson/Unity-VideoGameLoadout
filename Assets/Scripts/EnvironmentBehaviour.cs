@@ -1,67 +1,61 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+
 using TMPro;
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnvironmentBehaviour : MonoBehaviour, IUpgradeable
 {
-    public string label01 = "Hello world";
-    public TMP_Text terminalText;
-    public TMP_InputField inputField;
-    int _counter;
-    int _visibleCount;
-    public string inputText;
-    
+    public string _terminalText;
 
-    [SerializeField] [Range(0, 3)] int _level = 0;
+    public TMP_Text _textMeshPro;
+
+    int _counter;
+
+    int _visibleCount;
+
+    [SerializeField]
+    [Range(0, 3)]
+    int _level = 0;
 
     void Awake()
     {
-        terminalText.SetText(label01);
-        terminalText.enableWordWrapping = true;
-        terminalText.alignment = TextAlignmentOptions.Bottom;
+        _textMeshPro.text = _terminalText;
+        _textMeshPro.enableWordWrapping = true;
+        _textMeshPro.alignment = TextAlignmentOptions.BottomLeft;
     }
 
-    void UpdateText(string val)
-    {
-        inputText = val;
-        GameStateBehaviour.Instance.playerBehaviour.MovePlayer(inputText);
-    }
-    private void Start()
-    {
-        inputText = inputField.text;
-        inputField.onSubmit.AddListener(UpdateText);
-    }
     void OnEnable()
     {
         _counter = 0;
         _visibleCount = 0;
-        label01 = "";
-        terminalText.SetText(label01);
+        _terminalText = string.Empty;
+        _textMeshPro.text = _terminalText;
     }
 
-    public void DoText()
+    public void DoText(string text)
     {
         StopCoroutine("StartUp");
-        label01 += GameStateBehaviour.Instance.playerBehaviour.Position + "\n";
-        terminalText.SetText(label01);
+        _terminalText += text;
+        _textMeshPro.text = _terminalText;
         StartCoroutine("StartUp");
     }
 
     IEnumerator StartUp()
     {
         // Force and update of the mesh to get valid information.
-        terminalText.ForceMeshUpdate();
-        var totalVisibleCharacters = terminalText.textInfo.characterCount; // Get # of Visible Character in text object
-        while (_visibleCount < terminalText.textInfo.characterCount)
+        _textMeshPro.ForceMeshUpdate();
+        var totalVisibleCharacters = _textMeshPro.textInfo.characterCount; // Get # of Visible Character in text object
+        while (_visibleCount < _textMeshPro.textInfo.characterCount)
         {
             _visibleCount = _counter % (totalVisibleCharacters + 1);
-            terminalText.maxVisibleCharacters = _visibleCount; // How many characters should TextMeshPro display?
+            _textMeshPro.maxVisibleCharacters = _visibleCount; // How many characters should TextMeshPro display?
 
             // Once the last character has been revealed, wait 1.0 second and start over.
-
             _counter += 1;
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
@@ -77,6 +71,9 @@ public class EnvironmentBehaviour : MonoBehaviour, IUpgradeable
 
     public int Level
     {
-        get { return _level; }
+        get
+        {
+            return _level;
+        }
     }
 }
