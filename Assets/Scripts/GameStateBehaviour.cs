@@ -1,7 +1,5 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
 using System.Collections.Generic;
 
 public class GameStateBehaviour : MonoBehaviour
@@ -21,13 +19,11 @@ public class GameStateBehaviour : MonoBehaviour
     private List<GameObject> behaviours;
 
     [SerializeField]
-    private GameObject HUD; 
-
-    bool preloaded = false;
+    private GameObject HUD;
 
     void Awake()
     {
-        if (Instance != null)
+        if(Instance != null)
         {
             Destroy(gameObject);
         }
@@ -37,30 +33,19 @@ public class GameStateBehaviour : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        GameObject pb, eb, gb;
+        var playerPrefab = Resources.Load("PlayerBehaviour");
+        var gamePrefab = Resources.Load("GameBehaviour");
+        var environmentPrefab = Resources.Load("EnvironmentBehaviour");
 
-        
+        var pb = Instantiate(playerPrefab, transform) as GameObject;
+        var eb = Instantiate(environmentPrefab, transform) as GameObject;
+        var gb = Instantiate(gamePrefab, transform) as GameObject;
 
-        if (!preloaded)
-        {
-            var playerPrefab = Resources.Load("PlayerBehaviour");
-            var gamePrefab = Resources.Load("GameBehaviour");
-            var environmentPrefab = Resources.Load("EnvironmentBehaviour");
+        playerBehaviour = pb.GetComponent<PlayerBehaviour>();
+        environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
+        gameBehaviour = gb.GetComponent<GameBehaviour>();
 
-            pb = Instantiate(playerPrefab, transform) as GameObject;
-            eb = Instantiate(environmentPrefab, transform) as GameObject;
-            gb = Instantiate(gamePrefab, transform) as GameObject;
 
-            playerBehaviour = pb.GetComponent<PlayerBehaviour>();
-            environmentBehaviour = eb.GetComponent<EnvironmentBehaviour>();
-            gameBehaviour = gb.GetComponent<GameBehaviour>();
-        }
-        else
-        {
-            pb = FindObjectOfType<PlayerBehaviour>().gameObject;
-            eb = FindObjectOfType<EnvironmentBehaviour>().gameObject;
-            gb = FindObjectOfType<GameBehaviour>().gameObject;
-        }
 
         playerBehaviour.PlayerMovementEvent.AddListener(OnPlayerMove);
 
@@ -72,11 +57,11 @@ public class GameStateBehaviour : MonoBehaviour
         upgradeDict = new Dictionary<string, IUpgradeable>();
         Upgradeables.ForEach(u => upgradeDict.Add(u.GetType().ToString(), u));
     }
- 
+
     public IUpgradeable GetUpgrade(string value)
     {
         IUpgradeable v;
-        if (upgradeDict.TryGetValue(value, out v)) return v;
+        if(upgradeDict.TryGetValue(value, out v)) return v;
         return null;
     }
 
@@ -88,15 +73,19 @@ public class GameStateBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            HUD.SetActive(!HUD.activeSelf);
+            for(int i = 0; i < HUD.transform.childCount; ++i)
+            {
+                var immediateChildGo = HUD.transform.GetChild(i).gameObject;
+                immediateChildGo.SetActive(!immediateChildGo.activeSelf);
+            }
         }
     }
 
     public void LoadScene(int index)
     {
-        if (index == (int)Level.PLAYER)
+        if(index == (int)Level.PLAYER)
         {
             environmentBehaviour.gameObject.SetActive(true);
             playerBehaviour.gameObject.SetActive(true);
